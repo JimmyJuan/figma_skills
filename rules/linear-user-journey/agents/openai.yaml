@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linear User Journey"
+  short_description: "Build and safely maintain linked Figma journeys"
+  default_prompt: "Use $linear-user-journey to design or revise a Figma journey with reusable screens and safe synchronization."

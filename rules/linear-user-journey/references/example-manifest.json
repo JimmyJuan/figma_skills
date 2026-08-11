@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "journey_id": "J01",
+  "actor": "失主 / 宠物主人",
+  "outcome": "发布寻宠并完成团聚闭环",
+  "occurrences": [
+    {
+      "occurrence_id": "J01-S01",
+      "screen_id": "home-default",
+      "figma_node_id": "100:101",
+      "main_component_node_id": "200:201",
+      "scope": "main_component",
+      "mapping_status": "approved",
+      "semantic_rationale": "默认首页入口；与其他旅程共享结构和导航角色。"
+    },
+    {
+      "occurrence_id": "J01-B01",
+      "screen_id": "ai-follow-up",
+      "figma_node_id": "100:102",
+      "main_component_node_id": "200:202",
+      "scope": "instance_override",
+      "mapping_status": "approved",
+      "semantic_rationale": "同一跟进页面的 24 小时状态，由 Variant 表达。"
+    }
+  ],
+  "transitions": [
+    {
+      "transition_id": "T01",
+      "source_occurrence_id": "J01-S01",
+      "target_occurrence_id": "J01-B01",
+      "kind": "elapsed_time",
+      "label": "发布后 24 小时"
+    }
+  ]
+}
