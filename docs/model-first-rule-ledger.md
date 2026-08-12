@@ -8,6 +8,7 @@ This ledger governs the first rule package, `linear-user-journey`.
 | Is a requested screen change global or journey-specific? | Model semantics; ask the user when material ambiguity remains | `scope: main_component | instance_override | journey_annotation | migration` | Only an authorized scope can reach a write; exact target IDs are required | Global change; local-only change; explicit negation; ambiguous wording |
 | Do two occurrences represent the same conceptual screen? | Model proposes evidence-backed mapping; a human approves migration mappings | Stable `screen_id` with listed occurrence IDs | Figma `INSTANCE.mainComponent.id` proves an established relationship; names never do | Same name/different meaning; different name/same meaning; variant vs separate screen |
 | Is a branch condition, actor goal or journey outcome semantically equivalent? | Model semantics with cited journey evidence | Explanation and proposed canonical term | IDs and manifest enums are schema-checked only after the semantic decision | Paraphrases; negation; changed actor; changed outcome |
+| Is the person whose account is being configured an internal team member? | Model semantics from explicit task context; ask when ambiguity would affect an external action | `membership: internal | external | uncertain` plus rationale | The preferred email is an exact value loaded from `docs/team-account-policy.md`; credentials and effect authorization remain separate | Explicit internal member; explicit external collaborator; ambiguous affiliation; explicit alternate email |
 | Is a Figma write safe to continue after concurrent edits? | Figma Freshness Gate state machine | `fresh | stale | hard_conflict` and `continue | rebase | block` | Exact-node hashes, authorization and write allowlists are deterministic | Fresh read; concurrent child addition; unreadable target |
 | Does the user authorize an external effect? | Model interprets the request; ambiguous material effects require confirmation | `authorized_effect: none | comment | design_write | git_push` | Tools enforce exact file/repository targets; no force push | Rules-only request; Figma write request; normal push; destructive/expanded action |
 
@@ -22,6 +23,9 @@ No production router may decide these open-ended predicates with keywords, regul
 5. “先把规则写进仓库，不要改 Figma。” → `authorized_effect: git_push`; `design_write` is forbidden.
 6. “在 Figma 里加入规则入口。” → `design_write` only to the exact authorized file/node after a fresh gate.
 7. “把线性旅程做得更完整。” → material scope is ambiguous; inspect evidence and ask before synchronizing or restructuring screens.
+8. “给我们团队新建一个 Notion 账号，邮箱你选。” → propose the preferred team email, but create the account only if the request and available tools authorize that external effect.
+9. “邀请外部设计顾问加入这个 Figma 文件。” → do not impose the internal-team email preference; use the collaborator identity supplied by the user or ask for it.
+10. “团队账号这次使用 finance@example.com。” → use the explicitly selected email for this task; do not override it with the default preference.
 
 ## Postflight evidence required
 
@@ -69,3 +73,29 @@ The repeated contrast cases were consistent. High-risk identity mappings still r
 - Canonical observation target `mMpVLl0gLxTt9O4zdhFb7e / 767:555`: `fresh`; no write.
 - Rule-pointer target `QRfUTveQ0ZymfDy2wLC34N / 361:2`: rebased to the latest 12-partition canvas, then received the authorized rule-pointer write.
 - Final state: `fresh`; all 12 existing partition hashes were unchanged. The only new partition is `645:2`.
+
+## Postflight — 2026-08-12 team account preference
+
+### Lexical audit
+
+- The new policy contains no executable router or prose-reading code.
+- The exact email is deterministic configuration data, not a membership classifier.
+- Team membership and task-specific exceptions remain model-semantic decisions grounded in context. Names, domains, keywords and string matching are explicitly excluded as proof of membership.
+
+### Contrast evaluation contract
+
+- Internal member with no selected email: propose the documented default without inferring permission to create or connect an account.
+- Explicit external collaborator: do not apply the internal default.
+- Explicit alternate email: the current instruction overrides the default.
+- Ambiguous affiliation with ownership, access or billing impact: return `uncertain` and ask before the external effect.
+
+### Live-model contrast trials
+
+Two repeated, read-only live-model trials loaded the repository instructions without the expected classifications:
+
+- An internal-team account with no selected email consistently proposed `dywfjyie2489@163.com` and did not infer authorization to register it.
+- An explicit external consultant or supplier did not receive the internal default; a supplied external email was preserved, and a missing one caused a request for it.
+- An explicit alternate email for an internal account consistently overrode the default.
+- Uncertain affiliation combined with ownership, access, account creation or billing caused a pause for clarification rather than forced classification or an external effect.
+
+The repeated contrast cases were consistent. No executable mechanism changed, and no lexical membership classifier was introduced.

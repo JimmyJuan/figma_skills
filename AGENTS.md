@@ -13,6 +13,12 @@
 - For semantic routing or scope changes, maintain `docs/model-first-rule-ledger.md` and run its postflight checks.
 - Validate exact node IDs, main-component relationships, schemas, authorization and effect scope deterministically.
 
+## Team account preference
+
+- Before choosing an email for an internal-team Notion, Figma or collaboration-service account, read `docs/team-account-policy.md`.
+- Determine whether a person is an internal team member from the task context. Do not infer membership from an email domain, name, keyword or other lexical shortcut.
+- Treat the preferred email as an account-selection default only; account creation, invitations, ownership changes, purchases and service connections still require their own authorization.
+
 ## Repository conventions
 
 - GitHub content is canonical. Obsidian and Figma should point here rather than copy full rules.

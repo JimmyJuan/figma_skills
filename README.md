@@ -28,6 +28,10 @@ GitHub 是唯一规范源。Obsidian、Figma 文件和各类 AI 配置只保存�
 
 普通聊天不会自动读取任意 GitHub 仓库；需要 GitHub 连接、Project 文件或在对话中提供链接。Figma 也没有跨所有文件生效的账号级 AI 指令，因此每个相关 Figma 文件应放一个轻量规则入口，指向本仓库的固定规则路径。
 
+## 团队协作账号
+
+为团队注册或连接 Notion、Figma 等协作服务前，先读取 [`docs/team-account-policy.md`](docs/team-account-policy.md)。它记录默认邮箱、外部协作者例外、授权边界和凭据安全要求。
+
 ## 设计原则
 
 - 语义判断交给模型并保留理由；身份、权限、节点关系、状态机和写入范围使用确定性约束。
