@@ -21,7 +21,8 @@
 
 ## Repository conventions
 
-- GitHub content is canonical. Obsidian and Figma should point here rather than copy full rules.
+- The team has selected one Notion workspace as the future canonical knowledge source. Until its exact database URL and first verified Published rule are recorded, this repository remains the operational source for existing rule packages.
+- After that cutover, treat this repository as the versioned portable AI/skill mirror. Obsidian and Figma should point to the canonical Published rule or its verified mirror rather than maintain independent full copies.
 - Keep each rule portable: no private credentials, local-only secrets or unexplained machine paths.
 - Put detailed guidance in `references/`; keep `SKILL.md` focused on decisions and workflow.
 - Scripts may validate closed formats only. They must not pretend to understand free-form product or design semantics.
