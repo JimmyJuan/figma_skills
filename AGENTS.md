@@ -2,6 +2,7 @@
 
 ## Rule routing
 
+- Before selecting or resuming a Figma source for implementation, comparison, or handoff, read `rules/design-source/SKILL.md`. Prefer RC; retain the task's selected batch until the user explicitly switches it, and warn without blocking solely because a selected source is non-RC.
 - Treat each folder under `rules/` as a self-contained agent skill. Read its `SKILL.md` completely before acting, then load only the referenced files required for the task.
 - Use `rules/linear-user-journey/SKILL.md` when a task creates, reads, edits, audits or migrates a screen-by-screen journey, especially when screen occurrences repeat across journeys and must stay synchronized.
 - Select rules by meaning and task context. Do not build keyword, regular-expression, containment, token-distance or sentence-specific routers for open-ended user text.

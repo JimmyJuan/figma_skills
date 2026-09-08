@@ -7,10 +7,11 @@ description: "Build, read, audit, revise or migrate Figma linear user journeys: 
 
 Use this rule to keep a journey easy to scan as a story and safe to maintain as a system. “Linear” means the primary reading order is explicit; it does not forbid branches, loops, alternate entries or cross-role supporting flows.
 
-Version: `0.1.0`.
+Version: `0.1.1`.
 
 ## Required gates
 
+- When the journey is a development or comparison source, first apply [design-source](../design-source/SKILL.md) to recover or select the task's RC and accepted baseline. A new RC does not move an existing task to that batch.
 - If the task reads, compares, comments on or writes Figma, run the environment's Figma freshness checkpoint against the exact file key and node ID before using target evidence. Repeat it before an authorized write and before completion.
 - Load the available Figma editing guidance before using a Figma write tool.
 - Treat analysis, comments, design writes and Git pushes as different effects. Do not infer a design write from a request to document or explain a rule.

@@ -8,7 +8,8 @@
 
 | 规则 | 版本 | 用途 | 入口 |
 | --- | --- | --- | --- |
-| 线性用户旅程 | 0.1.0 | 建立可扫描的角色旅程，并让重复页面通过 Component / Instance 安全同步 | [`rules/linear-user-journey/SKILL.md`](rules/linear-user-journey/SKILL.md) |
+| 设计源与 RC 基线 | 1.0.0 | 优先 RC；任务保持选定批次，用户明确指定才换版；非 RC 提醒后可继续 | [`rules/design-source/SKILL.md`](rules/design-source/SKILL.md) |
+| 线性用户旅程 | 0.1.1 | 建立可扫描的角色旅程，并让重复页面通过 Component / Instance 安全同步 | [`rules/linear-user-journey/SKILL.md`](rules/linear-user-journey/SKILL.md) |
 
 ## 如何使用
 
