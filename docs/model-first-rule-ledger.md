@@ -1,9 +1,10 @@
 # Model-first rule ledger
 
-This ledger governs the first rule package, `linear-user-journey`.
+This ledger governs the rule packages and their source-selection and effect boundaries.
 
 | Predicate that reads prose | Decision owner | Structured result | Deterministic boundary | Required evaluation |
 | --- | --- | --- | --- | --- |
+| Which design batch has the task selected, and did the user request a switch or continuous tracking? | Model semantics over the task's existing selection and explicit user instructions; use `rules/design-source/SKILL.md` | Source kind, task policy, selection authority, and accepted baseline reference | Exact file/node IDs, captured version/hash, and evidence availability; never classify intent using an RC-name regex | RC1 with RC2 published; explicit switch; current Working Space selection; resumed task sharing a node with another task |
 | Does the request concern a linear user journey? | Model semantics, guided by the skill description and the journey contract | `applies: true | false` plus a short rationale | File keys, node IDs and node types are validated exactly | Direct request; implicit journey work; unrelated Figma work |
 | Is a requested screen change global or journey-specific? | Model semantics; ask the user when material ambiguity remains | `scope: main_component | instance_override | journey_annotation | migration` | Only an authorized scope can reach a write; exact target IDs are required | Global change; local-only change; explicit negation; ambiguous wording |
 | Do two occurrences represent the same conceptual screen? | Model proposes evidence-backed mapping; a human approves migration mappings | Stable `screen_id` with listed occurrence IDs | Figma `INSTANCE.mainComponent.id` proves an established relationship; names never do | Same name/different meaning; different name/same meaning; variant vs separate screen |
@@ -99,3 +100,11 @@ Two repeated, read-only live-model trials loaded the repository instructions wit
 - Uncertain affiliation combined with ownership, access, account creation or billing caused a pause for clarification rather than forced classification or an external effect.
 
 The repeated contrast cases were consistent. No executable mechanism changed, and no lexical membership classifier was introduced.
+
+## Postflight — 2026-09-08 design RC retention
+
+- Added `design-source` 1.0.0 and a source-selection pointer in `linear-user-journey` 0.1.1. No executable router or mechanical freshness state changed.
+- Both skill packages passed `quick_validate.py`; the existing example manifest passed its structural validator; `git diff --check` passed.
+- Two independent read-only model trials received realistic RC/source scenarios without expected answers. Both retained RC1 when RC2 appeared, scoped an explicit RC2 switch to the requested task, warned and continued for an explicit Working Space choice, recovered the task's own older checkpoint, and rejected a same-named replacement when the accepted source was unavailable.
+- Review identified ambiguity about task-scoped checkpoint recovery and whether the default policy supplied standing authority. The rule now states both explicitly, including `policy_authority: design-source-default`; the installed freshness guidance uses the task's bound baseline before searching other checkpoints.
+- These were textual behavior trials, not live Figma reads or a fidelity verification. The policy change makes no canvas, comment, library, or design-migration effect. Previously observed example links are not treated as accepted implementation snapshots.
